@@ -1,0 +1,42 @@
+{
+  "name": "test",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "postinstall": "husky",
+    "test": "jest",
+    "build": "rimraf dist && yarn build:main",
+    "build:main": "tsc -p tsconfig.build.json",
+    "lint:raw": "eslint",
+    "lint": "yarn lint:raw ."
+  },
+  "lint-staged": {
+    "*.{css,json,md,scss,yaml}": [
+      "prettier --write"
+    ],
+    "*.{ts,tsx,js,jsx}": [
+      "yarn lint:raw --fix"
+    ]
+  },
+  "engines": {
+    "node": "^18.12"
+  },
+  "devDependencies": {
+    "@jest/globals": "^29.7.0",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.13.10",
+    "esbuild": "^0.25.0",
+    "esbuild-jest-transform": "^2.0.1",
+    "eslint": "~9.22.0",
+    "eslint-plugin-n": "17.15.1",
+    "husky": "^9.1.7",
+    "jest": "^29.7.0",
+    "lint-staged": "^15.4.3",
+    "prettier": "^3.5.3",
+    "rimraf": "^6.0.1",
+    "ts-jest": "^29.2.6",
+    "typescript": "~5.8.2",
+    "typescript-eslint": "~8.26.0"
+  },
+  "packageManager": "yarn@4.7.0"
+}
